@@ -1,0 +1,61 @@
+###############################################
+
+!These couple of codes and script can be used to calculate conformational thermodynamics change for any residue's any dihedral angle along with error bar.
+
+!Codes and scripts for analysis is written by Abhik Ghosh Moulick, SNBNCBS (abhik.ghosh@bose.res.in)
+
+!Conformational thermodynamics code to calculate entropy and free energy change of individual residue is written by Dr. Amit Das, IIT Delhi.
+
+################################################
+
+We perform the analysis for apo-protein (without ligand/cofactor) and holo protein (protein with ligand/cofactor). One need to change file name according to convenience.
+
+
+1. At first generate dihedral angle using any code or any kind of software.
+
+2. Arrange all residues along frame wise. Ex. if a peptide have 3 residue LYS, ASN and GLY and total frame number is 3 then arrange the file as follows:
+
+1	LYS phi psi chi1
+1	LYS phi psi chi1
+1	LYS
+	 '
+	 '
+3	GLY .............
+3	GLY .............
+3	GLY .............
+
+If the dihedral angles are not arranged in this order then use the code "sort.f95" (Change required parameter as described in the code)
+
+	run :gfortran sort.f95 -o a.out
+	     ./a.out
+
+3. Generate random conformation : Choose for which residue, which dihedral angle user want to calculate conformational thermodynamics analysis. For this use code "random-conformation.f95"
+
+	run: gfortran random-conformation.f95 -o a.out
+		 ./a.out
+
+4. Now split the dataset in 12 chunks using the script "split.sh". You can generate more chunks according to your choice. The number of chunks corresponds to number of data file for convergence check.
+	run: ./split.sh
+
+5. Generate histogram for each data file using the code "histogram.py". Give number of datafile given in "listthisprot" file. Provide number of datapoint in each 
+   file and desired binwidth.
+   run: python3 histogram.py (use python version 3)
+   
+6.	Now to calculate free energy change , run code the code "free-energy-change.f90". Provide desired inputs. Check "list-conformational-td" to modify the input file.
+   run: gfortran free-energy-change.f90 -o a.out
+		 ./a.out
+		 
+7. Run "gen-f-s-cal.f90" to calculate entropy change of the residue.
+	run: gfortran gen-f-s-cal.f90 -o a.out
+		 ./a.out
+		 
+8. Run a script "catscript.sh" to make a file which contains all values of entropy and free energy change for various blocks
+			run: chmod +catscript.sh
+				 bash catscript.sh
+				 
+9. Finally run "avg.py" to calculate avg free energy and entropy change along with the error.
+			run: python3 avg.py
+
+
+### We also add two test file for the analysis. Two different file corresponds to two different conformations of the protein i.e. apo and holo form of Alpha-Lactalbumin.
+### Arrange your files accordingly.
