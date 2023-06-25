@@ -7,6 +7,12 @@
 !Conformational thermodynamics code to calculate entropy and free energy change of individual residue is written by Dr. Amit Das, IIT Delhi.
 
 ################################################
+If you use this code please cite the followings:
+
+1. Conformational Contribution to Thermodynamics of Binding in Protein-Peptide Complexes through Microscopic Simulation, Das et al., Biophysical Journal (https://doi.org/10.1016/j.bpj.2012.12.058)
+2. Fluctuation dominated ligand binding in molten globule protein, Abhik Ghosh Moulick, J. Chakrabarti, Biorxiv ID: https://doi.org/10.1101/2023.04.28.538683
+
+
 
 We perform the analysis for apo-protein (without ligand/cofactor) and holo protein (protein with ligand/cofactor). One need to change file name according to convenience.
 
