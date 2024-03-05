@@ -1,0 +1,12 @@
+      1000 #nframe:number of conformations used for analysis 
+       140 #nres: number of residues/base-pairs/bases
+       2   #nwindow:number of windows
+       50  #nconf:number of conformations per window
+       10  #nbin:number of bins
+       apo.dat	      apo-smp.dat    # input values and sampled values in apo.
+       holo.dat       holo-smp.dat  #  input values and sampled values in holo.
+       01-apo-smp.dat 01-apo-max_min.dat 01-apo-hist.dat 
+       01-holo-smp.dat	01-holo-max_min.dat     01-holo-hist.dat
+       02-apo-smp.dat	02-apo-max_min.dat      02-apo-hist.dat
+       02-holo-smp.dat	02-holo-max_min.dat     02-holo-hist.dat
+ 
