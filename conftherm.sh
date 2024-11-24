@@ -4,6 +4,18 @@
 
 ##in split command below 'split -l 50 --numeric-suffixes=1 --suffix-length=2 --additional-suffix="-apo-smp.dat"  ${i}-apo.dat "" --verbose', the number 50 to be replaced by the number = nconf
 
+### adding a PyVEnv directory pointer
+PVENV=$1
+
+### Check if the argument is provided
+if [ -z "$PVENV" ]; then
+    echo "Assuming the Python environment is located at the root."
+    source ./.venv/bin/activate
+else
+    echo "Python environment was set to $PVENV"
+    source "$PVENV/bin/activate"
+fi
+
 imax=141
 split -l 100 --numeric-suffixes=1 --suffix-length=3 --additional-suffix="-apo.dat"  apo-smp.dat "" --verbose
 split -l 100  --numeric-suffixes=1 --suffix-length=3 --additional-suffix="-holo.dat" holo-smp.dat "" --verbose
